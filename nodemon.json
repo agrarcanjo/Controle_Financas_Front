@@ -1,0 +1,7 @@
+{
+    "what" : ["scr"],
+    "ext" : "ts, tsx",
+    "excMap" : {
+        "ts" : "sucrase-node src/index.ts"
+    }
+}
