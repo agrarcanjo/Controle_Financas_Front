@@ -1,10 +1,9 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import Card from '../components/card'
 import FormGroup from '../components/form-group'
 import { withRouter } from 'react-router-dom'
 
 import UsuarioService from '../app/service/usuarioService'
-import LocalStorageService from '../app/service/localstorageService'
 import { mensagemErro } from '../components/toastr'
 import { AuthContext  } from '../main/provedorAutenticacao'
 
@@ -20,6 +19,8 @@ class Login extends React.Component{
         this.service = new UsuarioService();
     }
 
+
+
     entrar = () => {
         this.service.autenticar({
             email: this.state.email,
@@ -28,6 +29,7 @@ class Login extends React.Component{
             this.context.iniciarSessao(response.data)
             this.props.history.push('/home')
         }).catch( erro => {
+            console.log(erro.response.data)
            mensagemErro(erro.response.data)
         })
     }
